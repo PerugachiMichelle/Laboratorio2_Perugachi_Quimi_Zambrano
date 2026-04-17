@@ -17,11 +17,23 @@ CREATE TABLE IF NOT EXISTS libro(
     FOREIGN KEY (autor_id) REFERENCES autor(id)
 );
 
-CREATE TABLE usuario (
+CREATE TABLE IF NOT EXISTS usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100),
     apellido VARCHAR(100),
     correo VARCHAR(150),
-    tipo_usuario VARCHAR(50) -- 'lector' o 'bibliotecario'
+    tipo_usuario VARCHAR(50) 
+);
+
+CREATE TABLE IF NOT EXISTS prestamo (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    libro_id INT,
+    fecha_prestamo DATE,
+    fecha_devolucion_prevista DATE,
+    fecha_devolucion_real DATE,
+
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id),
+    FOREIGN KEY (libro_id) REFERENCES libro(id)
 );
 

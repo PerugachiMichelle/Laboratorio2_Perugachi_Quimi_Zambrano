@@ -4,6 +4,8 @@ require('dotenv').config();
 
 const autorRoutes = require('./routes/autorRoutes');
 const libroRoutes = require('./routes/libroRoutes');
+const prestamoRoutes = require('./routes/prestamoRoutes');
+const usuarioRoutes = require('./routes/usuarioRoutes');
 
 
 const app = express();
@@ -15,6 +17,8 @@ app.use(express.json());
 //asignamos las rutas
 app.use('/api/autores', autorRoutes);
 app.use('/api/libros', libroRoutes);
+app.use('/api/prestamos', prestamoRoutes);
+app.use('/api/usuarios', usuarioRoutes);
 
 
 app.get('/heath', (req, res) => {

@@ -91,5 +91,17 @@ class Escenario(HttpUser):
             "autor_id": random.randint(1, 10)
         }
         self.client.put(f"/api/libros/{libro_id}", json=updated_data)
+        
+    #actualizar usuario
+    @task(3)
+    def updateUsuario(self):
+        usuario_id = random.randint(1, 10)  # Suponiendo que hay usuarios con IDs del 1 al 10
+        updated_data = {
+            "nombre": f"Nombre Usuario Actualizado {random.randint(1, 1000)}",
+            "apellido": "Apellido Usuario Actualizado",
+            "correo": f"correo{random.randint(101, 1000)}@ejemplo.com",
+            "tipo_usuario": random.choice(["lector", "bibliotecario"])
+        }
+        self.client.put(f"/api/usuarios/{usuario_id}", json=updated_data)
 
         
